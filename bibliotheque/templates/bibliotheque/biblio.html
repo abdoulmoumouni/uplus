@@ -1,0 +1,108 @@
+{% extends "./base.html" %}
+{% block content %}
+
+<div class="col-12">
+    <div class="card-box">
+
+        <div class="table-wrapper"><div class="table-rep-plugin fixed-solution" data-pattern="priority-columns">
+            <div class="table-responsive" data-pattern="priority-columns">
+                <!-- <div class="sticky-table-header" style="height: 49px; visibility: hidden; width: auto; top: -1px;"><table id="tech-companies-1-clone" class="table table-striped table-bordered">
+                    <thead class="thead-default">
+                    <tr>
+                        <th id="tech-companies-1-col-0-clone" style="display: table-cell;">Titre</th>
+                        <th data-priority="1" id="tech-companies-1-col-1-clone" style="display: table-cell;">Last Trade</th>
+                        <th data-priority="3" id="tech-companies-1-col-2-clone" style="display: table-cell;">Trade Time</th>
+                        <th data-priority="1" id="tech-companies-1-col-3-clone" style="display: table-cell;">Change</th>
+                        <th data-priority="3" id="tech-companies-1-col-4-clone" style="display: table-cell;">Prev Close</th>
+                        <th data-priority="3" id="tech-companies-1-col-5-clone" style="display: table-cell;">Open</th>
+                        <th data-priority="6" id="tech-companies-1-col-6-clone" style="display: table-cell;">Bid</th>
+                        <th data-priority="6" id="tech-companies-1-col-7-clone" style="display: table-cell;">Ask</th>
+                        <th data-priority="6" id="tech-companies-1-col-8-clone" style="display: table-cell;">1y Target Est</th>
+                    </tr>
+                    </thead>
+
+                <tbody>
+                    <tr>
+                        <th data-org-colspan="1" data-columns="tech-companies-1-col-0" style="display: table-cell;">GOOG <span class="co-name">Google Inc.</span></th>
+                        <td data-org-colspan="1" data-priority="1" data-columns="tech-companies-1-col-1" colspan="1" style="display: table-cell;">597.74</td>
+                        <td data-org-colspan="1" data-priority="3" data-columns="tech-companies-1-col-2" colspan="1" style="display: table-cell;">12:12PM</td>
+                        <td data-org-colspan="1" data-priority="1" data-columns="tech-companies-1-col-3" colspan="1" style="display: table-cell;">14.81 (2.54%)</td>
+                        <td data-org-colspan="1" data-priority="3" data-columns="tech-companies-1-col-4" colspan="1" style="display: table-cell;">582.93</td>
+                        <td data-org-colspan="1" data-priority="3" data-columns="tech-companies-1-col-5" colspan="1" style="display: table-cell;">597.95</td>
+                        <td data-org-colspan="1" data-priority="6" data-columns="tech-companies-1-col-6" colspan="1" style="display: table-cell;">597.73 x 100</td>
+                        <td data-org-colspan="1" data-priority="6" data-columns="tech-companies-1-col-7" colspan="1" style="display: table-cell;">597.91 x 300</td>
+                        <td data-org-colspan="1" data-priority="6" data-columns="tech-companies-1-col-8" colspan="1" style="display: table-cell;">731.10</td>
+                    </tr>
+
+
+                    </tbody>
+                  </table></div> -->
+                  <table id="tech-companies-1" class="table table-striped table-bordered">
+                    <thead class="thead-default">
+                    <tr>
+
+                        <th id="tech-companies-1-col-0" style="display: table-cell;">Titre</th>
+                        <th data-priority="1" id="tech-companies-1-col-1" style="display: table-cell;">Documment</th>
+                        <!-- <th data-priority="3" id="tech-companies-1-col-2" style="display: table-cell;"> Auteur </th> -->
+                        <th data-priority="1" id="tech-companies-1-col-3" style="display: table-cell;">Structure</th>
+                        <th data-priority="3" id="tech-companies-1-col-4" style="display: table-cell;">Description</th>
+                        <!-- <th data-priority="3" id="tech-companies-1-col-5" style="display: table-cell;">Publication</th> -->
+                        <!-- <th data-priority="6" id="tech-companies-1-col-6" style="display: table-cell;">Publié par</th> -->
+                        <th data-priority="6" id="tech-companies-1-col-7" style="display: table-cell;">Logo structure</th>
+                        <!-- <th data-priority="6" id="tech-companies-1-col-8" style="display: table-cell;">1y Target Est</th> -->
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                      {% for doc in document %}
+                    <tr>
+                        <th data-org-colspan="1" data-columns="tech-companies-1-col-0" style="display: table-cell;"><span class="co-name">
+                          <a href="{{ doc.get_absolute_url }}">{{ doc.titre }}</a>
+                        </span></th>
+                        <td data-org-colspan="1" data-priority="1" data-columns="tech-companies-1-col-1" colspan="1" style="display: table-cell;">{{ doc.type }}</td>
+                        <!-- <td data-org-colspan="1" data-priority="3" data-columns="tech-companies-1-col-2" colspan="1" style="display: table-cell;">{{ doc.auteur }}</td> -->
+                        <td data-org-colspan="1" data-priority="1" data-columns="tech-companies-1-col-3" colspan="1" style="display: table-cell;">{{ doc.structure }}</td>
+                        <th data-org-colspan="1" data-columns="tech-companies-1-col-0" style="display: table-cell;"><span class="co-name">{{ doc.titre }}</span></th>
+                        <!-- <td data-org-colspan="1" data-priority="3" data-columns="tech-companies-1-col-5" colspan="1" style="display: table-cell;">{{ doc.date_ajout }}</td> -->
+                        <!-- <td data-org-colspan="1" data-priority="6" data-columns="tech-companies-1-col-6" colspan="1" style="display: table-cell;">{{ doc.utilisateur }}</td> -->
+                        <td data-org-colspan="1" data-priority="6" data-columns="tech-companies-1-col-7" colspan="1" style="display: table-cell;"><img src="{{ doc.image.url }}" alt=""  width="80s"/></td>
+                        <!-- <td data-org-colspan="1" data-priority="6" data-columns="tech-companies-1-col-8" colspan="1" style="display: table-cell;">731.10</td> -->
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if document.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ document.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ document.number }} of {{ document.paginator.num_pages }}.
+                        </span>
+
+                        {% if document.has_next %}
+                        <a href="?page={{ document.next_page_number }}">next</a>
+                        <a href="?page={{ document.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+
+            </div>
+
+        </div></div>
+
+    </div>
+</div>
+
+<!-- {{ doc.titre }}
+{{ doc.auteur }}
+{{ doc.corps }}
+{{ doc.utilisateur }}
+{{ doc.structure }}
+<img src="{{ doc.image.url }}" alt=""  width="880s"/>
+<img src="{{ doc.logo.url }}" alt="" style="margin-bottom: 20px;max-width: 130px;" width="80s"/> -->
+
+
+{% endblock %}

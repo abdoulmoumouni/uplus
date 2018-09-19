@@ -1,0 +1,196 @@
+{% extends "./base.html" %}
+{% block content %}
+    <style>
+    #sidebar-menu ul ul a {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    .entetecard{
+        display: inline;
+    }
+
+    .logoentetecard{
+        float: right;
+        margin-top: -70px;
+    }
+    .titreinfos{
+        display: inline-flex;
+    }
+    .univers{
+        color:#039cfd;
+    }
+    .descliv,p{
+        font-size: 13px;
+        margin-bottom: 0rem;
+        text-align: justify;
+    }
+    .details-couv h2{
+
+    }
+    </style>
+
+<style>
+    .catliv li a{
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+    .catliv li a:hover{
+        border-bottom: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: black;
+        color: #000000;
+    }
+    .catliv li a:active
+    {
+        color: #000000;
+    }
+</style>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page-title-box">
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item">
+                                <a href="#">Uplus</a>
+                            </li>
+                            <li class="breadcrumb-item active">Achat Livre</li>
+                        </ol>
+                        <div class="catliv">
+                            <li class="breadcrumb float-left">
+                                <a href="#">Droit</a>
+                            </li>
+                            <li class="breadcrumb float-left">
+                                <a href="#">Sciences Humaines</a>
+                            </li>
+                            <li class="breadcrumb float-left">
+                                <a href="#">Sciences et environnement</a>
+                            </li>
+                            <li class="breadcrumb float-left">
+                                <a href="#">Agronomie</a>
+                            </li>
+                            <li class="breadcrumb float-left">
+                                <a href="#">Sante</a>
+                            </li>
+                            <li class="breadcrumb float-left">
+                                <a href="#">Informatique</a>
+                            </li>
+                            <li class="breadcrumb float-left">
+                                <a href="#">la vie pratique</a>
+                            </li>
+                            <li class="breadcrumb float-left">
+                                <a href="#">Autres</a>
+                            </li>
+
+                        </div>
+
+
+
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end row -->
+
+
+            </div>
+
+            <!-- end row -->
+
+
+
+            <div class="row">
+                 {% for livre in book %}
+                <div class="col-sm-4 col-xs-12" style="padding-right: 0px; padding-left: 0px;">
+                        <div class="card m-b-20 card-body">
+                            <div class="card-body" style="display: inherit;">
+                                <div>
+                                   <img src="{{ livre.image.url }}" alt="" style="margin-bottom: 20px;max-width: 130px;" width="80s" class="img-thumbnail"/>
+                                    <div class="" style="color: deeppink">
+                                       <p style="text-align: center; text-decoration-line: underline;margin-top: -11px;">Prix:</p>
+                                       {{ livre.prix }}FCFA
+                                    </div>
+
+                                </div>
+
+
+                                <div class="details-couv">
+                                    <h2 style="margin-bottom: 5px;
+                                    font-size: 1.2em;
+                                    line-height: 1em;">
+                                        <a href="{% url 'detail' livre.id %}"> {{ livre.titre }} </a>
+                                    </h2>
+                                    <ul style="font-size: 0.8em; padding: 0;
+                                                        list-style: none;
+                                                        margin-bottom: 5px;">
+                                        <li>
+                                            <b>Auteur</b> : {{livre.auteur}}
+                                        </li>
+                                        <li>
+                                            <b>Éditeur</b> : {{livre.editeur}}
+                                        </li>
+                                        <li>
+                                            <b>Etat</b> : {{livre.etat}}
+                                        </li>
+                                    </ul>
+                                    <div class="descliv" >
+                                        <p> {{ livre.summary | safe  }} </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-secondary">
+                                <div>
+                                    <button class="btn btn-pink waves-effect btn-sm">
+                                        <i class="fa fa-heart m-r-5"></i>
+                                        <span>Like : {{ livre.vote }}</span>
+                                    </button>
+                                </div>
+                                <button class="btn btn-dark waves-effect waves-light btn-sm" onclick="window.location = '{% url 'detail' livre.id %}';">plus</button>
+                            </div>
+
+                        </div>
+                    </div>
+                     {% endfor %}
+                </div>
+                <style>
+                .pagination i {
+                    text-align: center;
+                    margin: 0;
+                    vertical-align: middle;
+                    font-size: 24px;
+                    border: 1px solid #eceeef;
+                    width: 50px;
+                    height: 40px;
+                    line-height: 40px;
+                    margin-right: 15px;
+                    color: rgba(43, 61, 81, 0.7);
+                    border-radius: 3px;
+                    display: inline-block;
+                    background-color:gray;
+                        }
+                    .pagination {
+                        display=block!important;
+                        text-align=center!important;
+                        width=initial!important;
+                    }
+                </style>
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if book.has_previous %}
+                        <a href="?page=1"><i class="fa fa-angle-double-left"></i></a>
+                        <a href="?page={{ book.previous_page_number }}"><i class="zmdi zmdi-chevron-left"></i></a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ book.number }} sur {{ book.paginator.num_pages }}.
+                        </span>
+
+                        {% if book.has_next %}
+                        <a href="?page={{ book.next_page_number }}"><i class="zmdi zmdi-chevron-right"></i></a>
+                        <a href="?page={{ book.paginator.num_pages }}"><i class="fa fa-angle-double-right"></i></a>
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- end row -->
+            {% endblock %}

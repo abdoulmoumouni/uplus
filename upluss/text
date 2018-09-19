@@ -1,0 +1,34 @@
+User = get_user_model()
+def register(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+        username = ['username']
+        password = ['password1']
+        email = ['email']
+        first_name = ['first_name']
+        last_name = ['last_name']
+        user = User.objects.create_user('username = username', 'password = password', 'email = email','first_name','last_name')
+        auth.login(request,user)
+        redirect('login')
+    else:
+        form = SignUpForm()
+    context ={'form':form}
+    return render (request,'uplus/register.html',context)
+
+
+    def register(request):
+        if request.method =="POST":
+            if request.POST['password'] == request.POST['repassword']:
+                try:
+                    user = User.objects.get(username=request.POST['username'])
+                    return render(request,'uplus/register.html',{'erreur':'Utilisateur deja occupe' })
+                except User.DoesNotExist:
+                    user = User.objects.create_user(request.POST['username'],first_name=request.POST['prenom'],last_name=request.POST['nom'],password=request.POST['password'],email=request.POST['email'])
+                    auth.login(request,user)
+                    return redirect('login')
+            else:
+                return render(request,'uplus/register.html',{'erreur':'les mots de pass ne correspondent pas' })
+        else:
+            return render(request,'uplus/register.html')

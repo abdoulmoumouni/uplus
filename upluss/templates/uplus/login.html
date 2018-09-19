@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static %}
+<html style="overflow: hidden;">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <!-- App Favicon -->
+        <link rel="shortcut icon" href={% static "images/logo2.png" %}>
+
+        <!-- App title -->
+        <title>Uplus | Se Former et S'Informer</title>
+
+        <!-- Bootstrap CSS -->
+        <link href={% static 'bootstrap/bootstrap.min.css' %} rel="stylesheet" type="text/css" />
+
+        <!-- App CSS -->
+        <link href={% static "bootstrap/style.css" %} rel="stylesheet" type="text/css" />
+
+        <!-- customstyle CSS -->
+        <link href={% static "bootstrap/customstyle.css" %} rel="stylesheet" type="text/css" />
+
+        <!-- Modernizr js -->
+        <script src={% static "js/modernizr.min.js" %}></script>
+
+        <!-- material-design-iconic-font CSS -->
+        <link href={% static "scss/icons/material-design-iconic-font/css/material-design-iconic-font.css" %} rel="stylesheet" type="text/css"
+        />
+
+        <!-- material-design-iconic-font min CSS -->
+        <link href={% static "scss/icons/material-design-iconic-font/css/material-design-iconic-font.min.css" %} rel="stylesheet"
+            type="text/css" />
+
+
+    </head>
+
+
+    <body>
+
+        <div class="account-pages" style="background: #15191d;"></div>
+        <div class="clearfix"></div>
+        <div class="wrapper-page" >
+
+        	<div class="account-bg">
+                <div class="card-box mb-0" style="border:5px solid #15191d;" >
+                    <div class="text-center m-t-20">
+                        <a href="index.html" class="logo">
+                            <i><img src="{% static "images/logo2.png" %}" alt="" width="50s"> </i>
+                            <span style="color:  #15191d;">Uplus</span>
+                        </a>
+                    </div>
+
+                    {% if erreur %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                         {{ erreur }}
+                    </div>
+
+                    {% endif %}
+                    <div class="m-t-10 p-20">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h6 class="text-muted text-uppercase m-b-0 m-t-0">Se connecter</h6>
+                            </div>
+                        </div>
+                        <form class="m-t-20" action={% url 'login' %} method="POST">
+                            {% csrf_token %}
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" type="text" required="" placeholder="Utilisateur" name="username">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" type="password" required="" placeholder="Mot de pass" name="password">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="checkbox">
+                                        <input id="checkbox-signup" type="checkbox">
+                                        <label for="checkbox-signup">
+                                            Se souvenir de moi
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group text-center row m-t-10">
+                                <div class="col-12">
+                                    <button class="btn btn-success btn-block waves-effect waves-light" type="submit" style="background-color: #15191d;border-color: #174dff; :hover{
+                                     background-color: #15191d;border-color: #174dff;color:white;
+                                    }">Se connecter</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group row m-t-30 mb-0">
+                                <div class="col-12">
+                                    <a href="pages-recoverpw.html" class="text-muted"><i class="fa fa-lock m-r-5"></i> Mot de passe oublié?</a>
+                                </div>
+                            </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="m-t-20">
+                    <div class="text-center">
+                        <p class="text-white">Vous n'avez pas de compte?
+                            <a href={% url 'register' %} class="text-white m-l-5">
+                                <b>S'enregistrer</b>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- end card-box-->
+
+        </div>
+        <!-- end wrapper page -->
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src={% static "js/jquery.min.js" %}></script>
+        <script src={% static "js/popper.min.js" %}></script>
+        <!-- Popper for Bootstrap -->
+        <script src={% static "js/bootstrap.min.js" %}></script>
+        <script src={% static "js/detect.js" %}></script>
+        <script src={% static "js/fastclick.js" %}></script>
+        <script src={% static "js/jquery.blockUI.js" %}></script>
+        <script src={% static "js/waves.js" %}></script>
+        <script src={% static "js/jquery.nicescroll.js" %}></script>
+        <script src={% static "js/jquery.scrollTo.min.js" %}></script>
+        <script src={% static "js/jquery.slimscroll.js" %}></script>
+        <script src={% static "plugins/switchery/switchery.min.js" %}></script>
+
+        <!-- App js -->
+        <script src={% static "js/jquery.core.js" %}></script>
+        <script src={% static "js/jquery.app.js" %}></script>
+
+
+    </body>
+</html>

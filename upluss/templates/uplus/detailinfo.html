@@ -1,0 +1,172 @@
+
+{% extends "./base.html" %}
+{% block content %}
+<!-- <img src="{{ info.image.url }}" alt="" width="400s"/>
+{{ info.description }}
+{{ info.titre }}
+{{ info.date_parution }}
+{{ info.signature1 }}
+{{ info.faculte }}
+{{ info.universite }} -->
+<div class="row">
+  <div class="col-12">
+    <div class="card-box">
+    <style>
+    #corps {
+      font-size: 18px;
+      /* line-height:2px; */
+
+      margin-left: 30px;
+      padding-right: 30px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .float-left h6{
+      margin-top: -26px;
+    }
+
+    .btn-dark {
+    float: none;
+    margin-top: 0px;
+    }
+
+    </style>
+    <div class="panel-body">
+      <div class="clearfix">
+        <div class="float-left ">
+          <h3 class="">{{ info.universite }}/{{ info.faculte }}</h3><br>
+          <h6>address:</h6><br>
+          <h6>Tel:</h6><br>
+          <h6>BP:</h6>
+        </div>
+        <div class="float-right">
+          <h5><img src="{{ info.image.url }}" alt="" width="90s"/><br>
+            <small></small>
+          </h5>
+        </div>
+      </div>
+      <hr>
+      <div class="panel-heading">
+      <h3>{{ info.titre }}</h3>
+    </div>
+      <div class="row">
+        <div class="col-12">
+
+          <div class="float-left m-t-30">
+            <address>
+              <strong>Date de publication</strong><br>
+              {{ info.date_ajout }}
+              <br>
+              <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
+          </div>
+          <div class="float-right m-t-30">
+            <strong>Date d'evennement </strong><br>
+              {{ info.date_parution }}
+          </div>
+        </div><!-- end col -->
+      </div>
+      <!-- end row -->
+
+      <div class="m-h-50"></div>
+
+      <div class="row" id="corps">
+        <div class="col-12">
+          <div class="">
+            {{ info.description }}
+          </div>
+
+          <!-- <div class="table-responsive">
+            <table class="table m-t-30">
+              <thead class="bg-faded">
+                <tr><th>#</th>
+                  <th>Item</th>
+                  <th>Description</th>
+                  <th>Quantity</th>
+                  <th>Unit Cost</th>
+                  <th>Total</th>
+                </tr></thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>LCD</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>1</td>
+                    <td>$380</td>
+                    <td>$380</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Mobile</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>5</td>
+                    <td>$50</td>
+                    <td>$250</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>LED</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>2</td>
+                    <td>$500</td>
+                    <td>$1000</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>LCD</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>3</td>
+                    <td>$300</td>
+                    <td>$900</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Mobile</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>5</td>
+                    <td>$80</td>
+                    <td>$400</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="clearfix m-t-30">
+              <!-- <h5 class="small text-inverse font-600"><b>PAYMENT TERMS AND POLICIES</b></h5> -->
+
+              <!-- <small>
+                All accounts are to be paid within 7 days from receipt of
+                invoice. To be paid by cheque or credit card or direct payment
+                online. If account is not paid within 7 days the credits details
+                supplied as confirmation of work undertaken will be charged the
+                agreed quoted fee noted above.
+              </small> -->
+            </div>
+          </div>
+          <div class="col-6 ">
+            <!-- <p class="text-right"><b>Sub-total:</b> 2930.00</p>
+            <p class="text-right">Discout: 12.9%</p>
+            <p class="text-right">VAT: 12.9%</p> -->
+            <hr>
+            <h5 class="text-right">{{ info.signature1 }}</h5>
+          </div>
+        </div>
+        <hr>
+        <div class="hidden-print">
+          <div class="float-right">
+            <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light"><i class="fa fa-print"></i></a>
+            <button type="button" class="btn btn-facebook waves-effect waves-light"><i class="fa fa-facebook"></i></button>
+            <button type="button" class="btn btn-twitter waves-effect waves-light"><i class="fa fa-twitter"></i></button>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

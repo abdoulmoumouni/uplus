@@ -1,0 +1,90 @@
+{% extends "./base.html" %}
+{% block content %}
+<!-- end row -->
+<div class="account-bg">
+  <div class="card-box mb-0" style="border:5px solid #15191d;">
+    <div class="text-center m-t-20">
+      <a href="index.html" class="logo">
+        <i>
+          <img src="/static/images/logo2.png" alt="" class="logo" width="50s">
+        </i>
+        <span style="color: #15191d;">Uplus</span>
+      </a>
+    </div>
+    {% if erreur%}
+    <div class="alert alert-danger" role="alert">
+      {{ erreur }}
+    </div>
+    {% endif %}
+    <div class="m-t-0 p-0">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h6 class="text-muted text-uppercase m-b-0 m-t-0"> Editer votre compte </h6>
+        </div>
+      </div>
+
+      <form class="m-t-20" action={% url 'edit_profil' %} method="POST">
+
+        {% csrf_token %}
+
+        <div class="form-group row">
+          <div class="col-12">
+            <input class="form-control" type="text" required="" placeholder="prenom" name="prenom">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12">
+            <input class="form-control" type="text" required="" placeholder="Nom" name="nom">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12">
+            <input class="form-control" type="email" required="" placeholder="Email" name="email">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12">
+            <input class="form-control" type="text" required="" placeholder="Utilisateur" name="username">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12">
+            <input class="form-control" type="password" required="" placeholder="Mot de pass" name="password">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12">
+            <input class="form-control" type="password" required="" placeholder="Repeter le mot de pass" name="repassword">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12">
+            <div class="checkbox checkbox-default">
+              <input id="checkbox-signup" type="checkbox" checked="checked" name "conditions">
+              <label for="checkbox-signup">j'accepte
+                <a href="#">Les conditions d'utilisation</a>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row text-center m-t-10">
+          <div class="col-12">
+            <button class="btn btn-success btn-block waves-effect waves-light" type="submit" style="background-color: #15191d;border-color: #174dff; :hover{ background-color: #15191d;border-color: #174dff;color:white;
+              }"> Validez l'edition </button>
+            </div>
+          </div>
+          {{ form }}
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <!-- end row -->
+{% endblock %}
