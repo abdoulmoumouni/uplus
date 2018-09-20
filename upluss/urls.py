@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.login,name="login"),
     path('<int:livre_id>/', views.detail, name='detail'),
+    path('search', views.search, name='search'),
     path('infos/<int:infos_id>/', views.detailinfo, name='detailinfo'),
     path('index', views.index,name="index"),
     path('index/uam', views.uam,name="uam"),
@@ -22,5 +23,6 @@ urlpatterns = [
     path('profil', views.profil,name="profil"),
     path('edit_profil', views.edit_profil,name="edit_profil"),
     path('librairie', views.librairie,name="librairie"),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

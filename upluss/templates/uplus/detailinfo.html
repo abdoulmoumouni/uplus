@@ -55,14 +55,14 @@
           <div class="float-left m-t-30">
             <address>
               <strong>Date de publication</strong><br>
-              {{ info.date_ajout }}
+              {{ info.date_ajout|date:"SHORT_DATE_FORMAT" }}
               <br>
-              <abbr title="Phone">P:</abbr> (123) 456-7890
+              
             </address>
           </div>
           <div class="float-right m-t-30">
             <strong>Date d'evennement </strong><br>
-              {{ info.date_parution }}
+              {{ info.date_parution|date:"SHORT_DATE_FORMAT" }}
           </div>
         </div><!-- end col -->
       </div>

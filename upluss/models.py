@@ -31,7 +31,7 @@ class Infos(models.Model):
     date_ajout = models.DateTimeField(auto_now_add=True)
     universite = models.CharField(max_length = 150)
     faculte = models.CharField(max_length = 150)
-    slug = models.SlugField(default=True,null=True)
+    slug = models.SlugField(blank=True)
     categorie = models.CharField(max_length = 150)
     titre = models.CharField(max_length = 150)
     image = models.ImageField(upload_to ="images/")

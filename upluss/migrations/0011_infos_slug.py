@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('upluss', '0010_auto_20180901_0458'),
+    ('upluss', '0010_auto_20180901_0458'),
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='infos',
-            name='slug',
-            field=models.SlugField(blank=True),
+    migrations.AddField(
+        model_name='infos',
+        name='slug',
+        field=models.SlugField(blank=True),
         ),
     ]

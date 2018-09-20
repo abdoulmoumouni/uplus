@@ -157,3 +157,19 @@ def udi(request):
     info = paginator.get_page(page)
     context = {'info':info}
     return render(request,'uplus/udi.html',context)
+#search
+def search(request):
+    query = request.GET.get('query')
+    if not query:
+        livre = Livre.objects.all()
+    else:
+        # titre contains the query is and query is not sensitive to case.
+        livre = Livre.objects.filter(titre__icontains=query)
+    if not livre.exists():
+        livre = Livre.objects.filter(auteur__name__icontains=query)
+    titre = "Resultats de la recherche sur: %s"%query
+    context = {
+        'livre': livre,
+        'titre': titre
+    }
+    return render(request, 'uplus/search.html', context)

@@ -125,7 +125,7 @@
                                 <div class="entetecard">
                                 <div class="titreinfos"><p class="univers"><img src="{{ info.image.url }}" alt="" class="logoentetecard img-thumbnail" width="50s"><strong>{{ info.universite  }}<br>{{ info.faculte }}</strong></p>
                                 <h6 class="card-title"><a href="{{ info.get_absolute_url }}">{{ info.titre | upper }}</a>
-                                  <p class="datepub">Publié le:{{ info.date_ajout }}</p>
+                                  <p class="datepub">Publié le:{{ info.date_ajout|date:"SHORT_DATE_FORMAT" }} à {{ info.date_ajout|time:"H:i" }}</p>
                                 </h6></div>
                                 </div>
                                 <p class="card-text">{{ info.descarac }}</p>
@@ -133,7 +133,7 @@
                             <div class="card-footer bg-dark" style="color:#fff;">
 
                                 <div class="" style="font-size:16px;">
-                                  Date d'evenement:{{ info.date_parution }}
+                                  Date d'evenement: {{ info.date_parution|date:"SHORT_DATE_FORMAT" }} à {{ info.date_parution|time:"H:i" }}
                                 </div>
                                 <!-- <button class="btn btn-dark waves-effect waves-light btn-sm">plus</button> -->
                             </div>

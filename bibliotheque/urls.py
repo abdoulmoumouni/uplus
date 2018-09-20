@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.biblio,name="biblio"),
+    path('searchbiblio', views.searchbiblio,name="searchbiblio"),
     path('<int:bibliotheque_id>/', views.detailbiblio, name='detailbiblio'),
 
     # path('infos/<int:infos_id>/', views.detailinfo, name='detailinfo'),

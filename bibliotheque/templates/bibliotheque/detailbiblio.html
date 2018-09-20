@@ -45,9 +45,9 @@
           <div class="float-left m-t-30">
             <address>
               <strong>Date de publication</strong><br>
-              {{ bibliotheque.date_ajout }}
+              {{ bibliotheque.date_ajout|date:"SHORT_DATE_FORMAT" }}
               <br>
-              <abbr title="Phone">P:</abbr> (123) 456-7890
+              
             </address>
           </div>
           <div class="float-right m-t-30">
