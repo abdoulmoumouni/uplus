@@ -15,12 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from machina.app import board
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('upluss.urls')),
     path('bibliotheque/', include('bibliotheque.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('forum/', include(board.urls)),
 ]

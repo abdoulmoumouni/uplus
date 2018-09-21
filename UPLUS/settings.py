@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-from machina import get_apps as get_machina_apps
-from machina import MACHINA_MAIN_TEMPLATE_DIR
-from machina import MACHINA_MAIN_STATIC_DIR
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -45,12 +42,8 @@ INSTALLED_APPS = [
     'ckeditor',
 
     'ckeditor_uploader',
-    # Machina related apps:
-    'mptt',
-    'haystack',
-    'widget_tweaks',
 
-]+ get_machina_apps()
+]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
@@ -63,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Machina
-    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
 ]
@@ -74,7 +66,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            MACHINA_MAIN_TEMPLATE_DIR,
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -83,7 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'machina.core.context_processors.metadata',
+
             ],
         },
     },
@@ -144,10 +135,6 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = (
-    # ...
-    MACHINA_MAIN_STATIC_DIR,
-)
 
 CACHES = {
     'default': {
