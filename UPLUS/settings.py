@@ -27,12 +27,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9o+vxpae0(rij-l7ge#0hd#b#jo8*7$jmsw*4y9o@auw^57_ol'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
-
-ALLOWED_HOSTS = ['uplus.herokuapp.com']
+DEBUG = True
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -69,7 +65,7 @@ MIDDLEWARE = [
     # Machina
     'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'UPLUS.urls'
@@ -234,19 +230,3 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
-
-if os.environ.get('ENV') == 'PRODUCTION':
-
-    # Static files settings
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-
-    # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(PROJECT_ROOT, 'static'),
-    )
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
