@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9o+vxpae0(rij-l7ge#0hd#b#jo8*7$jmsw*4y9o@auw^57_ol'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.environ.get('ENV') == 'PRODUCTION':
+    DEBUG = False
+else:
+    DEBUG = True
+
 ALLOWED_HOSTS = ['127.0.0.1']
 
 
@@ -43,8 +47,8 @@ INSTALLED_APPS = [
 
     'ckeditor_uploader',
 
-]
 
+]
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 MIDDLEWARE = [
@@ -57,7 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Machina
     'django.middleware.security.SecurityMiddleware',
-
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'UPLUS.urls'
@@ -66,6 +70,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -80,7 +85,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'UPLUS.wsgi.application'
 
 
 # Database
@@ -134,6 +138,7 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
 
 
 CACHES = {
